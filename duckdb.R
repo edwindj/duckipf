@@ -20,9 +20,12 @@ b_s <- data.frame(
   value = c(.5, .3, .2, .05, .05, .9)
 )
 
-
+set.seed(1)
 d$value <- runif(nrow(d))
-d$value <- 200 * d$value / sum(d$value)
+d <- d |>
+  mutate(value = 100 * value / sum(value), .by = C)
+
+
 
 d_org <- d
 s <- 100
